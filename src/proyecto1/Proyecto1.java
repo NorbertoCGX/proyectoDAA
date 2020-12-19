@@ -26,23 +26,33 @@ public class Proyecto1 {
         
        
 
-//        ErdosYRenyi ER1 = new ErdosYRenyi();
-//        ER1.iniciar(30);
-//        ErdosYRenyi ER2 = new ErdosYRenyi();
-//        ER2.iniciar(100);
-//        ErdosYRenyi ER3 = new ErdosYRenyi();
-//        ER3.iniciar(500);
+        ErdosYRenyi ER1 = new ErdosYRenyi();
+        ER1.iniciar(30);
+        ErdosYRenyi ER2 = new ErdosYRenyi();
+        ER2.iniciar(100);
+        ErdosYRenyi ER3 = new ErdosYRenyi();
+        ER3.iniciar(500);
         
-//        Gilbert g1 = new Gilbert();
-//        g1.iniciar(30);
-//        Gilbert g2 = new Gilbert();
-//        g2.iniciar(30);
-//        Gilbert g3 = new Gilbert();
-//        g3.iniciar(30);
+        Gilbert g1 = new Gilbert();
+        g1.iniciar(30);
+        Gilbert g2 = new Gilbert();
+        g2.iniciar(100);
+        Gilbert g3 = new Gilbert();
+        g3.iniciar(500);
 
-          GeoSimple g = new GeoSimple();
-          g.iniciar(10);
+          GeoSimple gs1 = new GeoSimple();
+          gs1.iniciar(30);
+          GeoSimple gs2 = new GeoSimple();
+          gs2.iniciar(100);
+          GeoSimple gs3 = new GeoSimple();
+          gs3.iniciar(500);
 
+          BA b1 = new BA();
+          b1.iniciar(30);
+          BA b2 = new BA();
+          b2.iniciar(100);
+          BA b3 = new BA();
+          b3.iniciar(500);
     }
     
 }

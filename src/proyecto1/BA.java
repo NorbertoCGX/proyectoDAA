@@ -15,11 +15,11 @@ import java.util.Random;
  *
  * @author Norbe
  */
-public class GeoSimple {
-    
+public class BA {
     int id;
     int n1;
     int n2;
+    int p = 1;
     
     
     public void setId(int id)
@@ -46,55 +46,37 @@ public class GeoSimple {
     {
         return this.n2;
     }
-    
-    public void iniciar(int numN) throws IOException
+    public void setP(int p)
     {
-        GeoSimple g [] = new GeoSimple[numN];
+        this.p = p;
+    }
+    public int getP()
+    {
+        return this.p;
+    }
+    
+    public void iniciar(int numN) throws IOException{
+    
+        BA g [] = new BA[numN];
         Random r = new Random();
-        String ruta = "C:\\Users\\Norbe\\Documents\\NetBeansProjects\\Proyecto1\\GeoSimple"+numN+".gv";
+        String ruta = "C:\\Users\\Norbe\\Documents\\NetBeansProjects\\Proyecto1\\BA"+numN+".gv";
         File archivo = new File(ruta);
         BufferedWriter bw;
-        int r1;
-        int r2;
-        int distancia = 2;
-        boolean temp = false;
-        boolean temp2 = false;
         
         for(int i = 0; i<g.length; i++)
         {
-           temp = false;
-           temp2 = false;
-           g[i] = new GeoSimple();      
+           g[i] = new BA();
            g[i].setId(i);
-           r1 = r.nextInt(g.length);
-           do{
-              if(r1-i <= distancia){
-                  g[i].setN1(r1);
-                  temp = true;
-              }
-              else{
-                  r1 = r.nextInt(g.length);
-              }
-                  
-           }while(temp == false);
-            
-           r2 = r.nextInt(g.length);
-           do{
-              if(r2-i <= distancia){
-                  g[i].setN2(r2);
-                  temp = true;
-              }
-              else{
-                  r2 = r.nextInt(g.length);
-              }
-                  
-           }while(temp == false);
+           
+           g[i].setN1(r.nextInt(g.length));
+           g[i].setN2(r.nextInt(g.length));
            
            System.out.println(g[i].getId()+"->"+g[i].getN1());
            System.out.println(g[i].getId()+"->"+g[i].getN2());
+           
         }
         bw = new BufferedWriter(new FileWriter(archivo));
-        bw.write("graph GeoSimple"+numN+" { \n");
+        bw.write("graph BA"+numN+" { \n");
         for(int j = 0; j<g.length; j++)
         {
             bw.write(g[j].getId() +"->" + g[j].getN1() +"\n");
@@ -105,6 +87,7 @@ public class GeoSimple {
         bw.write("}"); 
         
         bw.close();
+        
         
     }
 }
