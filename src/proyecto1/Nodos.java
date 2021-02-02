@@ -13,106 +13,128 @@ import java.util.Random;
 
 /**
  *
- * @author Norbe
+ * @author Norber
  */
 public class Nodos {
     
-    int id;
-    int n1;
-    int n2;
+  private int Grado;
+    private double s,t;
+    private int ID;
+    private int conectado;
+    private boolean fal;
+    private double wi;
+  
+//MÉTODOS  
     
-    
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public int getId()
-    {
-        return id;
-    }
-    public void setN1(int n1)
-    {
-        this.n1 = n1;
-    }
-    public int getN1()
-    {
-        return this.n1;
-    }
-    public void setN2(int n2)
-    {
-        this.n2 = n2;
-    }
-    public int getN2()
-    {
-        return this.n2;
+    public Nodos (){
+        this.Grado = 0;
+        this.s = 0;
+        this.t = 0;
+        this.conectado = 0;
+        this.fal = false;
+        this.wi = 0;
     }
     
-    public void iniciar(int numN) throws IOException
-    {
-        Nodos g [] = new Nodos[numN];
-        Random r = new Random();
-        String ruta = "C:\\Users\\Norbe\\Documents\\NetBeansProjects\\Proyecto1\\ErdosYReny"+numN+".gv";
-        File archivo = new File(ruta);
-        BufferedWriter bw;
-        int r1;
-        int r2;
-        
-        for(int i = 0; i<g.length; i++)
-        {
-           g[i] = new Nodos();
-           g[i].setId(i);
-           r1 = r.nextInt(g.length);
-           r2 = r.nextInt(g.length);
-           g[i].setN1(r1);
-           g[i].setN2(r2); 
-           System.out.println(g[i].getId() + "->"+g[i].getN1());
-           System.out.println(g[i].getId() + "->"+g[i].getN2());
-        }
-        
-        bw = new BufferedWriter(new FileWriter(archivo));
-        bw.write("graph ErdosYReny"+numN+" { \n");
-                for(int i = 0; i<g.length; i++)
-                {
-                    bw.write(g[i].getId() +"->" + g[i].getN1() +"\n");
-                    bw.write(g[i].getId() +"->" + g[i].getN2() +"\n");
-                }
-        bw.write("}");
-                    
-        bw.close();
+    public Nodos (Nodos nx){
+        this.Grado = nx.getGrado();
+        this.ID = nx.get();
+        this.s = nx.getX();
+        this.t = nx.getY();
+        this.conectado = nx.getConectado();
+        this.fal = nx.getfal();
+        this.wi = nx.getwin();
+    }   
     
+    public Nodos (int id){    
+        this.ID = id;
+        this.Grado = 0;
+        this.s = 0;
+        this.t = 0;
+        this.conectado = 0;
+        this.fal = false;
+        this.wi = 0;
+    } 
+    
+    public Nodos (int id, int cnd, int grad, double x1, double y1, boolean g, double p){    
+        this.ID = id;
+        this.conectado = cnd;
+        this.Grado = grad;
+        this.s = x1;
+        this.t = y1;
+        this.fal = g;
+        this.wi = p;
     }
     
+    public Nodos (int id, double x1, double y1){    
+        this.ID = id;
+        this.Grado = 0;
+        this.s = x1;
+        this.t = y1;
+        this.fal = false;
+        this.conectado = 0;
+        this.wi = 0;
+    }
     
-//    public void Iniciar(int numNodos) throws IOException{
-//        
-//        Nodos ANodos[] = new Nodos[numNodos];
-//        Random r = new Random();
-//         String ruta = "C:\\Users\\Norbe\\Documents\\NetBeansProjects\\Proyecto1\\prueba.gv";
-//         File archivo = new File(ruta);
-//         BufferedWriter bw;
-//        
-//        
-//        for(int i = 0; i<ANodos.length; i++)
-//       {
-//           ANodos[i] = new Nodos();
-//           ANodos[i].setId(i);
-//           System.out.println(ANodos[i].getId());
-//       }
-//        for (int i = 0; i<ANodos.length; i++) {
-//            ANodos[i].setArista(r.nextInt(ANodos.length));
-//            System.out.println(ANodos[i].getId()+"->"+ ANodos[i].getArista());
-//            
-//        }
-//        
-//        bw = new BufferedWriter(new FileWriter(archivo));
-//        bw.write("digraph pruebaJava { \n");
-//                for(int i = 0; i<ANodos.length; i++)
-//                {
-//                    bw.write(ANodos[i].getId() +"->" + ANodos[i].getArista() +"\n");
-//                }
-//        bw.write("}");
-//                    
-//        bw.close();
-//    }
+    public void Cop (Nodos ny){
+        this.Grado = ny.getGrado();
+        this.ID = ny.get();
+        this.s = ny.getX();
+        this.t = ny.getY();
+        this.conectado = ny.getConectado();
+        this.fal = ny.getfal();
+        this.wi = ny.getwin();
+    }
+    
+    public void set (int id){
+        this.ID = id;
+    }
+    public int get (){
+        return this.ID;
+    }    
+    public void setGrado (int i){
+        this.Grado = i;
+    }    
+    public int getGrado (){
+        return this.Grado;
+    }    
+    public void IncGrado (int i){
+        this.Grado=this.Grado+i;
+    } 
+    public void DecGrado (int i){
+        this.Grado=this.Grado-i;
+    }
+    public void setX (double x1){
+        this.s=x1;
+    }
+    public void setY (double x1){
+        this.t=x1;
+    }
+    public double getX (){
+        return this.s;
+    }
+    public double getY (){
+        return this.t;
+    }
+    
+    public void conectar(){
+        this.conectado=1;
+    }
+    public int getConectado(){
+        return this.conectado;
+    }
+    
+    public void setfal (boolean a){
+        this.fal = a;
+    }
+    public boolean getfal (){
+        return this.fal;
+    }
+    
+    public void setwi (double p){
+        this.wi = p;
+    }
+    public double getwin (){
+        return this.wi; 
+    }
     
 }

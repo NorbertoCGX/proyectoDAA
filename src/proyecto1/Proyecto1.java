@@ -11,6 +11,14 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
+import static proyecto1.Grafo.BFS;
+import static proyecto1.Grafo.Barabasi;
+import static proyecto1.Grafo.DFS_I;
+import static proyecto1.Grafo.DFS_R;
+import static proyecto1.Grafo.ErdosRenyi;
+import static proyecto1.Grafo.Geografico;
+import static proyecto1.Grafo.Gilbert;
+import static proyecto1.Grafo.construir;
 
 /**
  *
@@ -25,203 +33,307 @@ public class Proyecto1 {
         // TODO code application logic here
         
        
-       
-//        Grafo EYR1 = new Grafo(30);
-//        Grafo EYR2 = new Grafo(100);
-//        Grafo EYR3 = new Grafo(500);
-//        
-//        Grafo Gilbert1 = new Grafo(30);
-//        Grafo Gilbert2 = new Grafo(100);
-//        Grafo Gilbert3 = new Grafo(500);
-//        
-//        Grafo Geo1 = new Grafo(30);
-//        Grafo Geo2 = new Grafo(100);
-//        Grafo Geo3 = new Grafo(500);
-//        
-//        Grafo BA1 = new Grafo(30);
-//        Grafo BA2 = new Grafo(100);
-//        Grafo BA3 = new Grafo(500);
-//        
-////////////////////////////// 1er entrega
-//        
-//        EYR1.modeloErdosyRenyi(30);
-//        EYR1.escribirArchivo("ErdosYRenyi30");
-//        EYR2.modeloErdosyRenyi(100);
-//        EYR2.escribirArchivo("ErdosYRenyi100");
-//        EYR3.modeloErdosyRenyi(1000);
-//        EYR3.escribirArchivo("ErdosYRenyi500");
-//
-//        Gilbert1.modeloGilbert(0.4);
-//        Gilbert1.escribirArchivo("Gilbert30");
-//        Gilbert2.modeloGilbert(0.6);
-//        Gilbert2.escribirArchivo("Gilbert100");
-//        Gilbert3.modeloGilbert(0.8);
-//        Gilbert3.escribirArchivo("Gilbert500");
-//        
-//        Geo1.modeloGeografico(3);
-//        Geo1.escribirArchivo("Geografico30");
-//        Geo2.modeloGeografico(2.5);
-//        Geo2.escribirArchivo("Geografico100");
-//        Geo3.modeloGeografico(5);
-//        Geo3.escribirArchivo("Geografico500"); 
-//        
-//        BA1.modeloBarabasiAlbert(10);
-//        BA1.escribirArchivo("BA30");
-//        BA2.modeloBarabasiAlbert(50);
-//        BA2.escribirArchivo("BA100");
-//        BA3.modeloBarabasiAlbert(100);
-//        BA3.escribirArchivo("BA500");
-//        
-//////////////////////////////////////        Algoritmo de DFS y BFS
-//
-//        Grafo bfsEyR1 = EYR1.BFS(0);
-//        bfsEyR1.escribirArchivo("bfsEYR30");
-//        Grafo dfsREyR1 = EYR1.DFS_R(0);
-//        dfsREyR1.escribirArchivo("dfsREyR30");
-//        Grafo dfsIEYR1 = EYR1.DFS_I(0);
-//        dfsIEYR1.escribirArchivo("dfsIEYR30");
-//        
-//        Grafo bfsEyR2 = EYR2.BFS(0);
-//        bfsEyR2.escribirArchivo("bfsEYR100");
-//        Grafo dfsREyR2 = EYR2.DFS_R(0);
-//        dfsREyR2.escribirArchivo("dfsREyR100"); 
-//        Grafo dfsIEYR2 = EYR2.DFS_I(0);
-//        dfsIEYR2.escribirArchivo("dfsIEYR100");
-//        
-//        Grafo bfsEyR3 = EYR3.BFS(0);
-//        bfsEyR3.escribirArchivo("bfsEYR500");
-//        Grafo dfsREyR3 = EYR3.DFS_R(0);
-//        dfsREyR3.escribirArchivo("dfsREyR500"); 
-//        Grafo dfsIEYR3 = EYR3.DFS_I(0);
-//        dfsIEYR3.escribirArchivo("dfsIEYR500");
-//         
-//        Grafo bfsGilbert1 = Gilbert1.BFS(0);
-//        bfsGilbert1.escribirArchivo("bfsGilbert30");
-//        Grafo dfsRGilbert1 = Gilbert1.DFS_R(0);
-//        dfsRGilbert1.escribirArchivo("dfsRGilbert30"); 
-//        Grafo dfsIGilbert1 = Gilbert1.DFS_I(0);
-//        dfsIGilbert1.escribirArchivo("dfsIGilbert30");
-//        
-//        Grafo bfsGilbert2 = Gilbert2.BFS(0);
-//        bfsGilbert2.escribirArchivo("bfsGilbert100");
-//        Grafo dfsRGilbert2 = Gilbert2.DFS_R(0);
-//        dfsRGilbert2.escribirArchivo("dfsRGilbert100"); 
-//        Grafo dfsIGilbert2 = Gilbert2.DFS_I(0);
-//        dfsIGilbert2.escribirArchivo("dfsIGilbert100");
-//
-//        Grafo bfsGilbert3 = Gilbert3.BFS(0);
-//        bfsGilbert3.escribirArchivo("bfsGilbert500");
-//        Grafo dfsRGilbert3 = Gilbert3.DFS_R(0);
-//        dfsRGilbert3.escribirArchivo("dfsRGilbert500"); 
-//        Grafo dfsIGilbert3 = Gilbert3.DFS_I(0);
-//        dfsIGilbert3.escribirArchivo("dfsIGilbert500");
-//        
-//        Grafo bfsGeo1 = Geo1.BFS(0);
-//        bfsGeo1.escribirArchivo("bfsGeo30");
-//        Grafo dfsRGeo1 = Geo1.DFS_R(0);
-//        dfsRGeo1.escribirArchivo("dfsRGeo30"); 
-//        Grafo dfsIGeo1 = Geo1.DFS_I(0);
-//        dfsIGeo1.escribirArchivo("dfsIGeo30");
-//
-//        Grafo bfsGeo2 = Geo2.BFS(0);
-//        bfsGeo2.escribirArchivo("bfsGeo100");
-//        Grafo dfsRGeo2 = Geo2.DFS_R(0);
-//        dfsRGeo2.escribirArchivo("dfsRGeo100"); 
-//        Grafo dfsIGeo2 = Geo2.DFS_I(0);
-//        dfsIGeo2.escribirArchivo("dfsIGeo100");
-//            
-//        Grafo bfsGeo3 = Geo3.BFS(0);
-//        bfsGeo3.escribirArchivo("bfsGeo500");
-//        Grafo dfsRGeo3 = Geo3.DFS_R(0);
-//        dfsRGeo3.escribirArchivo("dfsRGeo500"); 
-//        Grafo dfsIGeo3 = Geo3.DFS_I(0);
-//        dfsIGeo3.escribirArchivo("dfsIGeo500");
-//        
-//        Grafo bfsBA1 = BA1.BFS(0);
-//        bfsBA1.escribirArchivo("bfsBA30");
-//        Grafo dfsRBA1 = BA1.DFS_R(0);
-//        dfsRBA1.escribirArchivo("dfsRBA30"); 
-//        Grafo dfsIBA1 = BA1.DFS_I(0);
-//        dfsIBA1.escribirArchivo("dfsIBA30");
-//        
-//        Grafo bfsBA2 = BA2.BFS(0);
-//        bfsBA2.escribirArchivo("bfsBA100");
-//        Grafo dfsRBA2 = BA2.DFS_R(0);
-//        dfsRBA2.escribirArchivo("dfsRBA100"); 
-//        Grafo dfsIBA2 = BA2.DFS_I(0);
-//        dfsIBA2.escribirArchivo("dfsIBA100");
-//        
-//        Grafo bfsBA3 = BA3.BFS(0);
-//        bfsBA3.escribirArchivo("bfsBA500");
-//        Grafo dfsRBA3 = BA3.DFS_R(0);
-//        dfsRBA3.escribirArchivo("dfsRBA500"); 
-//        Grafo dfsIBA3 = BA3.DFS_I(0);
-//        dfsIBA3.escribirArchivo("dfsIBA500");
+//        Primer entrega
+
+        Grafo GER = new Grafo();
+        GER = ErdosRenyi(30,100);
+        construir("Entrega1\\Erdos y Renyi-30", GER);
+        GER = ErdosRenyi(100,500);
+        construir("Entrega1\\Erdos y Renyi-100", GER);
+        GER = ErdosRenyi(500,1000);
+        construir("Entrega1\\Erdos y Renyi-500", GER);
         
-        //////////////////////////// Algoritmos de 3er entrega
-
-
-        Grafo uno = new Grafo(30);
-        uno.modeloErdosyRenyi(90); 
-        Grafo unoPesado = uno.ValoresAristas(1.0, 15.0);
-        unoPesado.escribirArchivo("Dijkstra\\EYR30P");
-        Grafo unoDijkstra = unoPesado.Dijkstra(0);
-        unoDijkstra.escribirArchivo("Dijkstra\\EYR30PDijkstra");
-
-        Grafo dos = new Grafo(200);
-        dos.modeloErdosyRenyi(1000); 
-        Grafo dosPesado = dos.ValoresAristas(1.0, 15.0);
-        dosPesado.escribirArchivo("Dijkstra\\EYR200M");
-        Grafo dosDijkstra = dosPesado.Dijkstra(0);
-        dosDijkstra.escribirArchivo("Dijkstra\\EYR200MDijkstra");
+        Grafo GGIL = new Grafo();
+        GGIL = Gilbert(30,.2);
+        construir("Entrega1\\GIlbert-30", GGIL);
+        GGIL = Gilbert(100,.2);
+        construir("Entrega1\\GIlbert-100", GGIL);
+        GGIL = Gilbert(500,.2);
+        construir("Entrega1\\GIlbert-500", GGIL);
         
-        Grafo tres = new Grafo(30);
-        tres.modeloGilbert(0.5); 
-        Grafo tresPesado = tres.ValoresAristas(1.0, 15.0);
-        tresPesado.escribirArchivo("Dijkstra\\Gilbert30P");
-        Grafo tresDijkstra = tresPesado.Dijkstra(0);
-        tresDijkstra.escribirArchivo("Dijkstra\\Gilbert30PDijkstra");
-
-        Grafo cuatro = new Grafo(200);
-        cuatro.modeloGilbert(0.5); 
-        Grafo cuatroPesado = cuatro.ValoresAristas(1.0, 15.0);
-        cuatroPesado.escribirArchivo("Dijkstra\\Gilbert200M");
-        Grafo cuatroDijkstra = cuatroPesado.Dijkstra(0);
-        cuatroDijkstra.escribirArchivo("Dijkstra\\Gilbert200MDijkstra");
+        Grafo GEO = new Grafo();
+        GEO = Geografico(30, .6);
+        construir("Entrega1\\Geografico-30", GEO);
+        GEO = Geografico(100, .6);
+        construir("Entrega1\\Geografico-100", GEO);
+        GEO = Geografico(500, .6);
+        construir("Entrega1\\Geografico-500", GEO);
         
-        Grafo cinco = new Grafo(30);
-        cinco.modeloGeografico(2.5); 
-        Grafo cincoPesado = cinco.ValoresAristas(1.0, 15.0);
-        cincoPesado.escribirArchivo("Dijkstra\\Geo30P");
-        Grafo cincoDijkstra = cincoPesado.Dijkstra(0);
-        cincoDijkstra.escribirArchivo("Dijkstra\\Geo30PDijkstra");
-
-        Grafo seis = new Grafo(200);
-        seis.modeloGeografico(2.5);  
-        Grafo seisPesado = seis.ValoresAristas(1.0, 15.0);
-        seisPesado.escribirArchivo("Dijkstra\\Geo200M");
-        Grafo seisDijkstra = seisPesado.Dijkstra(0);
-        seisDijkstra.escribirArchivo("Dijkstra\\Geo200MDijkstra");
+        Grafo GB = new Grafo();
+        GB = Barabasi(30, 100);
+        construir("Entrega1\\Barabasi-30", GB);
+        GB = Barabasi(100, 500);
+        construir("Entrega1\\Barabasi-100", GB);
+        GB = Barabasi(500, 1000);
+        construir("Entrega1\\Barabasi-500", GB);
         
-        Grafo siete = new Grafo(30);
-        siete.modeloBarabasiAlbert(7);
-        Grafo sietePesado = siete.ValoresAristas(1.0, 15.0);
-        sietePesado.escribirArchivo("Dijkstra\\BA30P");
-        Grafo sieteDijkstra = sietePesado.Dijkstra(0);
-        sieteDijkstra.escribirArchivo("Dijkstra\\BA30PDijkstra");
+        
+//        segunda entrega
 
-        Grafo ocho = new Grafo(200);
-        ocho.modeloBarabasiAlbert(100);  
-        Grafo ochoPesado = ocho.ValoresAristas(1.0, 15.0);
-        ochoPesado.escribirArchivo("Dijkstra\\BA200M");
-        Grafo ochoDijkstra = ochoPesado.Dijkstra(0);
-        ochoDijkstra.escribirArchivo("Dijkstra\\BA200MDijkstra");
+        Grafo grafo = new Grafo();
+        grafo = ErdosRenyi(30,100);
+        Grafo ERBFS30 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiBFS-30", ERBFS30);
+        Grafo ERDFS_I30 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiDFS_I-30", ERDFS_I30);
+        Grafo ERDFS_R30 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiDFS_R-30", ERDFS_R30); 
+        grafo = ErdosRenyi(100,500);
+        Grafo ERBFS100 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiBFS-100", ERBFS100);
+        Grafo ERDFS_I100 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiDFS_I-100", ERDFS_I100);
+        Grafo ERDFS_R100 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiDFS_R-100", ERDFS_R100); 
+        grafo = ErdosRenyi(500,1000);
+        Grafo ERBFS500 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiBFS-500", ERBFS500);
+        Grafo ERDFS_I500 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiDFS_I-500", ERDFS_I500);
+        Grafo ERDFS_R500 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\Erdos y RenyiDFS_R-500", ERDFS_R500);
+        
+        
+        
+        
+        
+        grafo = Gilbert(30,.2);
+        Grafo GBFS30 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertBFS-30", GBFS30);
+        Grafo GDFS_I30 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertDFS_I-30", GDFS_I30);
+        Grafo GDFS_R30 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertDFS_R-30", GDFS_R30); 
+        grafo = Gilbert(100,.2);
+        Grafo GBFS100 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertBFS-100", GBFS100);
+        Grafo GDFS_I100 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertDFS_I-100", GDFS_I100);
+        Grafo GDFS_R100 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertDFS_R-100", GDFS_R100);
+        grafo = Gilbert(500,.2);
+        Grafo GBFS500 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertBFS-500", GBFS500);
+        Grafo GDFS_I500 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertDFS_I-500", GDFS_I500);
+        Grafo GDFS_R500 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GilbertDFS_R-500", GDFS_R500);
+        
+        
+        
+        
+        grafo = Geografico(30,.6);
+        Grafo GEOBFS30 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoBFS-30", GEOBFS30);
+        Grafo GEODFS_I30 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoDFS_I-30", GEODFS_I30);
+        Grafo GEODFS_R30 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoDFS_R-30", GEODFS_R30);  
+        grafo = Geografico(100,.6);
+        Grafo GEOBFS100 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoBFS-100", GEOBFS100);
+        Grafo GEODFS_I100 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoDFS_I-100", GEODFS_I100);
+        Grafo GEODFS_R100 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoDFS_R-100", GEODFS_R100);  
+        grafo = Geografico(500,.6);
+        Grafo GEOBFS500 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoBFS-500", GEOBFS500);
+        Grafo GEODFS_I500 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoDFS_I-500", GEODFS_I500);
+        Grafo GEODFS_R500 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\GeograficoDFS_R-500", GEODFS_R500);
+        
+        
+        
+        grafo = Barabasi(30,100);
+        Grafo BBFS30 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiBFS-30", BBFS30);
+        Grafo BDFS_I30 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiDFS_I-30", BDFS_I30);
+        Grafo BDFS_R30 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiDFS_R-30", BDFS_R30);  
+        grafo = Barabasi(100,500);
+        Grafo BBFS100 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiBFS-100", BBFS100);
+        Grafo BDFS_I100 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiDFS_I-100", BDFS_I100);
+        Grafo BDFS_R100 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiDFS_R-100", BDFS_R100);  
+        grafo = Barabasi(500,100);
+        Grafo BBFS500 = new Grafo(BFS(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiBFS-500", BBFS500);
+        Grafo BDFS_I500 = new Grafo(DFS_I(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiDFS_I-500", BDFS_I500);
+        Grafo BDFS_R500 = new Grafo(DFS_R(grafo,grafo.getNodos().get(0)));
+        construir("Entrega2\\BarabasiDFS_R-500", BDFS_R500);
+        
+//        tercer entrega
+        
 
-            
+        Grafo grafo1 = new Grafo();
+        grafo1 = ErdosRenyi(30,100);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraErdosRenyiPocos",grafo1);
+        grafo1 = ErdosRenyi(200,500);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraErdosRenyiMuchos",grafo1);
+        
+        
+        grafo1 = Gilbert(30,.2);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraGilbertPocos",grafo1);
+        grafo1 = Gilbert(200,.2);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraGilbertMuchos",grafo1);
+        
+        grafo1 = Geografico(30,.6);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraGeograficoPocos",grafo1);
+        grafo1 = Geografico(200,.6);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraGeograficoMuchos",grafo1);
+        
+        grafo1 = Barabasi(30,100);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraBarabasiPocos",grafo1);
+        grafo1 = Barabasi(200,500);
+        grafo1.EdgeValues(8, 150);
+        grafo1 = grafo1.Dijkstra(grafo1.getNodos().get(0));
+        construir("Entrega3\\DijkstraBarabasiMuchos",grafo1);
+
+    ////////////////////////////////// Cuarta entrega
+
+        Grafo grafo2 = new Grafo();
+        Grafo gPrim = new Grafo();
+        Grafo gkruskalD = new Grafo();
+        Grafo gkruskalI = new Grafo();
+        /////////Erdos y Renyi///////////
+        
+        grafo2 = ErdosRenyi(30,100);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\ErdosRenyiPrimPocos",gPrim);
+        grafo2 = ErdosRenyi(200, 500);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\ErdosRenyiPrimMuchos",gPrim);
+        
+        grafo2 = ErdosRenyi(30,100);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\ErdosRenyiKruskalDPocos",gkruskalD);
+        grafo2 = ErdosRenyi(200, 500);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\ErdosRenyiKruskalDMuchos",gkruskalD);
+        
+        grafo2 = ErdosRenyi(30,100);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\ErdosRenyiKruskalIPocos",gkruskalI);
+        grafo2 = ErdosRenyi(200, 500);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\ErdosRenyiKruskalIMuchos",gkruskalI);
+//        
+        
+        /////////// Gilbert
+
+        grafo2 = Gilbert(30,.2);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\GilbertPrimPocos",gPrim);
+        grafo2 = Gilbert(200, .2);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\GilbertPrimMuchos",gPrim);
+//
+        grafo2 = Gilbert(30,.2);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\GilbertKruskalDPocos",gkruskalD);
+        grafo2 = Gilbert(200, .2);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\GilbertKruskalDMuchos",gkruskalD);
+        
+        grafo2 = Gilbert(30,.2);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\GilbertKruskalIPocos",gkruskalI);
+        grafo2 = Gilbert(200, .2);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\GilbertKruskalIMuchos",gkruskalI);
+//
+//
+//    ////////Geografico
+//
+        grafo2 = Geografico(30,.6);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\GeograficoPrimPocos",gPrim);
+        grafo2 = Geografico(200, .6);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\GeograficoPrimMuchos",gPrim);
+////
+        grafo2 = Geografico(30,.6);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\GeograficoKruskalDPocos",gkruskalD);
+        grafo2 = Geografico(200, .6);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\GeograficoKruskalDMuchos",gkruskalD);
+        
+        grafo2 = Geografico(30,.6);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\GeograficoKruskalIPocos",gkruskalI);
+        grafo2 = Geografico(200, .6);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\GeograficoKruskalIMuchos",gkruskalI);
+     
+      ///////Barabasi
       
+        grafo2 = Barabasi(30,100);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\BarabasiPrimPocos",gPrim);
+        grafo2 = Barabasi(200, 500);
+        grafo2.EdgeValues(1, 1000);
+        gPrim = grafo2.Prim();
+        construir("Entrega4\\BarabasiPrimMuchos",gPrim);
+        
+        grafo2 = Barabasi(30,100);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\BarabasiKruskalDPocos",gkruskalD);
+        grafo2 = Barabasi(200, 500);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalD = grafo2.Kruskal_D();
+        construir("Entrega4\\BarabasiKruskalDMuchos",gkruskalD);
+        
+        grafo2 = Barabasi(30,100);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\BarabasiKruskalIPocos",gkruskalI);
+        grafo2 = Barabasi(200, 500);
+        grafo2.EdgeValues(1, 1000);
+        gkruskalI = grafo2.Kruskal_I();
+        construir("Entrega4\\BarabasiKruskalIMuchos",gkruskalI);
      
        
-        
 
     }
     
